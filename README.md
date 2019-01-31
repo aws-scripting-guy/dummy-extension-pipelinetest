@@ -26,3 +26,14 @@ This is the source code for [Snippet Guide](https://vscode-ext-docs.azurewebsite
 vsce package
 vsce publish -p <token> 
 ```
+
+What works 
+
+1. Automated build pipeline based on commit push
+2. Build
+3. Continuous deployment to VS Marketplace
+
+What does not work:
+
+1. Automated versioning in package.json 
+2. Automated versioning of releases back to Github
