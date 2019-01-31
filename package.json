@@ -2,7 +2,7 @@
 	"name": "snippet-sample",
 	"displayName": "Snippet Sample",
 	"description": "Snippet Sample",
-	"version": "0.7.2",
+	"version": "1.1.1",
     	"repository": {
         	"type": "git",
         	"url": "https://github.com/aws-scripting-guy/dummy-extension-pipelinetest.git"
