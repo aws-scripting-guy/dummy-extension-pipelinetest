@@ -30,9 +30,8 @@ steps:
 
 # copy build from agent to artifact directory
 - task: CopyFiles@2
-  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  displayName: 'Copy Files to Artifact Directory)'
   inputs:
-    SourceFolder: '$(Agent.BuildDirectory)'
     Contents: |
      **\*.vsix
      **\package.json
