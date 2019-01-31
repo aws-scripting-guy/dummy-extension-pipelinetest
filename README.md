@@ -37,3 +37,4 @@ What does not work:
 
 1. Automated versioning in package.json 
 2. Automated versioning of releases back to Github
+3. 
