@@ -1,0 +1,46 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'vs2017-win2016'
+
+# install npm
+steps:
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    verbose: false
+
+# install vsce
+- powershell: |
+   Write-Host "vsce setup"
+   npm install vsce -g 
+  displayName: 'install vsce'
+
+# package extension into .vsix
+- powershell: |
+   Write-Host "vsce package"
+   vsce package   
+  displayName: 'vsce package'
+
+# copy build from agent to artifact directory
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '$(Agent.BuildDirectory)'
+    Contents: |
+     **\*.vsix
+     **\package.json
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+# publish build in artifact directory
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    pathtoPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: MyBuildOutputs
