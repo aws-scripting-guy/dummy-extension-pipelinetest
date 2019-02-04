@@ -22,6 +22,11 @@ steps:
    npm install vsce -g 
   displayName: 'install vsce'
 
+# update version in package.json
+- powershell: |
+    Write-Host "npm version"
+    npm version patch
+
 # package extension into .vsix
 - powershell: |
    Write-Host "vsce package"
