@@ -9,6 +9,9 @@ trigger:
 pool:
   vmImage: 'vs2017-win2016'
 
+variables:
+  update_type: patch
+
 # install npm
 steps:
 - task: Npm@1
@@ -24,8 +27,11 @@ steps:
 
 # update version in package.json
 - powershell: |
-    Write-Host "npm version"
-    npm version patch
+   Write-Host "npm version"
+   $package_version = (npm version $UPDATE_TYPE).toString()
+
+- powershell: Write-Host "##vso[task.setvariable variable=package_version;]$package_version"
+  name: outputVersion
 
 # package extension into .vsix
 - powershell: |
