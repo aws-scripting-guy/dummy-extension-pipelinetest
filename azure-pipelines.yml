@@ -10,15 +10,17 @@ pool:
   vmImage: 'vs2017-win2016'
 
 variables:
-  System.Debug: true
   update_type: patch
   group: build_vars
 
 steps:
+- checkout: self
+  persistCredentials: true
+
 - task: Npm@1
   displayName: 'npm install'
   inputs:
-    verbose: false
+    verbose: true
 
 - powershell: |
    Write-Host "vsce setup"
@@ -33,6 +35,7 @@ steps:
 
 - powershell: |
     get-random > random.txt
+    git checkout master
     git add random.txt
     git commit -m "***NO_CI***"
     git push origin master
