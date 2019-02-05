@@ -36,6 +36,12 @@ steps:
   displayName: "push to remote git"
 
 - powershell: |
+    Write-Host "setting up git properties"
+    git config --global user.email "you@example.com"
+    git config --global user.name "Your Name"
+  displayName: "set up git properties"
+
+- powershell: |
    Write-Host "npm version $(UPDATE_TYPE)"
    $package_version = (npm version $(UPDATE_TYPE)).toString()
   displayName: 'update version field in package.json'
@@ -44,12 +50,6 @@ steps:
    Write-Host "vsce package"
    vsce package   
   displayName: 'package into .vsix'
-
-- powershell: |
-    Write-Host "setting up git properties"
-    git config --global user.email "you@example.com"
-    git config --global user.name "Your Name"
-  displayName: "set up git properties"
 
 - powershell: |
     git checkout master
