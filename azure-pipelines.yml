@@ -12,6 +12,7 @@ pool:
 variables:
   update_type: patch
   group: build_vars
+  system.debug: true
 
 steps:
 - checkout: self
