@@ -30,6 +30,9 @@ steps:
    Write-Host "npm version $UPDATE_TYPE"
    $package_version = (npm version $UPDATE_TYPE).toString()
 
+- powershell: |
+   Write-Host "update type is $(UPDATE_TYPE)"
+
 # output version number (not needed)
 - powershell: Write-Host "##vso[task.setvariable variable=package_version;]$package_version"
   name: outputVersion
