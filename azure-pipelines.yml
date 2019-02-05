@@ -27,8 +27,8 @@ steps:
 
 # update version in package.json
 - powershell: |
-   Write-Host "npm version $UPDATE_TYPE"
-   $package_version = (npm version $UPDATE_TYPE).toString()
+   Write-Host "npm version $(UPDATE_TYPE)"
+   $package_version = (npm version $(UPDATE_TYPE).toString()
 
 - powershell: |
    Write-Host "update type is $(UPDATE_TYPE)"
