@@ -32,6 +32,13 @@ steps:
     git config --global user.name "Your Name"
   displayName: "set up git properties"
 
+- powershell: |
+    get-random > random.txt
+    git add random.txt
+    git commit -m "***NO_CI***"
+    git push origin
+  displayName: "push to remote git"
+
 # update version in package.json
 - powershell: |
    Write-Host "npm version $(UPDATE_TYPE)"
