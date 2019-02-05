@@ -11,6 +11,7 @@ pool:
 
 variables:
   update_type: patch
+  group: build_vars
 
 # install npm
 steps:
@@ -25,13 +26,16 @@ steps:
    npm install vsce -g 
   displayName: 'install vsce'
 
+- powershell: |
+    Write-Host "setting up git properties"
+    git config --global user.email $(GIT_EMAIL)
+    git config --global user.name $(GIT_NAME)
+  displayName: "set up git properties"
+
 # update version in package.json
 - powershell: |
    Write-Host "npm version $(UPDATE_TYPE)"
    $package_version = (npm version $(UPDATE_TYPE)).toString()
-
-- powershell: |
-   Write-Host "update type is $(UPDATE_TYPE)"
 
 # output version number (not needed)
 - powershell: Write-Host "##vso[task.setvariable variable=package_version;]$package_version"
