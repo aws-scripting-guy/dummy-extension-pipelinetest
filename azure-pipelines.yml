@@ -41,16 +41,15 @@ steps:
     git push origin master
   displayName: "push to remote git"
 
-# update version in package.json
 - powershell: |
    Write-Host "npm version $(UPDATE_TYPE)"
    $package_version = (npm version $(UPDATE_TYPE)).toString()
+  displayName: 'update version field in package.json'
 
-# package extension into .vsix
 - powershell: |
    Write-Host "vsce package"
    vsce package   
-  displayName: 'vsce package'
+  displayName: 'package into .vsix'
 
 # copy build from agent to artifact directory
 - task: CopyFiles@2
