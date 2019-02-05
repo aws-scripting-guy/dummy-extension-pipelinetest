@@ -27,9 +27,10 @@ steps:
 
 # update version in package.json
 - powershell: |
-   Write-Host "npm version"
+   Write-Host "npm version $UPDATE_TYPE"
    $package_version = (npm version $UPDATE_TYPE).toString()
 
+# output version number (not needed)
 - powershell: Write-Host "##vso[task.setvariable variable=package_version;]$package_version"
   name: outputVersion
 
