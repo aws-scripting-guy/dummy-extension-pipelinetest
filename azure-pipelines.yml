@@ -51,6 +51,13 @@ steps:
    vsce package   
   displayName: 'package into .vsix'
 
+- powershell: |
+    git checkout master
+    git add package.json
+    git commit -m "***NO_CI***"
+    git push origin master
+  displayName: "push updated package.json to remote git"
+
 # copy build from agent to artifact directory
 - task: CopyFiles@2
   displayName: 'Copy Files to Artifact Directory)'
