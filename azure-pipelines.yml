@@ -28,8 +28,8 @@ steps:
 
 - powershell: |
     Write-Host "setting up git properties"
-    git config --global user.email $(GIT_EMAIL)
-    git config --global user.name $(GIT_NAME)
+    git config --local user.email $(GIT_EMAIL)
+    git config --local user.name $(GIT_NAME)
   displayName: "set up git properties"
 
 # update version in package.json
