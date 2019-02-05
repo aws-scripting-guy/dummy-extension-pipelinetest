@@ -34,11 +34,18 @@ steps:
   displayName: "set up git properties"
 
 - powershell: |
-    get-random > random.txt
     git checkout master
-    git add random.txt
+    git add package.json
     git commit -m "***NO_CI***"
     git push origin master
+  displayName: "push updated package.json to remote git"
+
+- powershell: |
+ #   get-random > random.txt
+ #   git checkout master
+ #   git add random.txt
+ #   git commit -m "***NO_CI***"
+ #   git push origin master
   displayName: "push to remote git"
 
 - powershell: |
@@ -50,13 +57,6 @@ steps:
    Write-Host "vsce package"
    vsce package   
   displayName: 'package into .vsix'
-
-- powershell: |
-    git checkout master
-    git add package.json
-    git commit -m "***NO_CI***"
-    git push origin master
-  displayName: "push updated package.json to remote git"
 
 # copy build from agent to artifact directory
 - task: CopyFiles@2
