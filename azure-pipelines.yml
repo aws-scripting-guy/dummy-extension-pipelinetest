@@ -14,14 +14,12 @@ variables:
   update_type: patch
   group: build_vars
 
-# install npm
 steps:
 - task: Npm@1
   displayName: 'npm install'
   inputs:
     verbose: false
 
-# install vsce
 - powershell: |
    Write-Host "vsce setup"
    npm install vsce -g 
@@ -37,7 +35,7 @@ steps:
     get-random > random.txt
     git add random.txt
     git commit -m "***NO_CI***"
-    git push origin
+    git push origin master
   displayName: "push to remote git"
 
 # update version in package.json
