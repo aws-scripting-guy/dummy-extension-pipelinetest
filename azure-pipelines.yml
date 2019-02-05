@@ -43,7 +43,8 @@ steps:
 
 - powershell: |
    Write-Host "npm version $(UPDATE_TYPE)"
-   $package_version = (npm version $(UPDATE_TYPE)).toString()
+   npm version
+   npm version $(UPDATE_TYPE)
   displayName: 'update version field in package.json'
 
 - powershell: |
