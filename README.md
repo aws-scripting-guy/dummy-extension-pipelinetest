@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/aws-scripting-guy/dummy-extension-pipelinetest/_apis/build/status/dummy-extension-pipelinetest-CI?branchName=master)](https://dev.azure.com/aws-scripting-guy/dummy-extension-pipelinetest/_build/latest?definitionId=5&branchName=master) [![Deployment Status](https://vsrm.dev.azure.com/aws-scripting-guy/_apis/public/Release/badge/46215bf7-103f-46f2-8b0d-61cd51f47602/1/1)](https://vsrm.dev.azure.com/aws-scripting-guy/_apis/public/Release/badge/46215bf7-103f-46f2-8b0d-61cd51f47602/1/1)
+
 # dummy-extension-pipelinetest
 Testing integration with Azure Pipelines 
 
