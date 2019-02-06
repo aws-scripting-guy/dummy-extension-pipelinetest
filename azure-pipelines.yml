@@ -43,11 +43,11 @@ steps:
   displayName: "remove package lock if present"
 
 - powershell: |
-    git status
-    git show
-    git checkout master
-    git add *
-    git commit -m "***NO_CI***"
+    #git status
+    #git show
+    #git checkout master
+    #git add *
+    #git commit -m "***NO_CI***"
   displayName: "git checkout master"
 
 - powershell: |
@@ -57,6 +57,9 @@ steps:
   displayName: 'update version field in package.json'
 
 - powershell: |
+    git status
+    git show
+    git checkout master
     get-random > random.txt
     git add random.txt
     git status
@@ -64,6 +67,7 @@ steps:
     git commit -m "***NO_CI***"
     git push
   displayName: "push updated package.json to remote git"
+
 - powershell: |
    Write-Host "vsce package"
    vsce package   
