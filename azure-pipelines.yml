@@ -33,6 +33,10 @@ steps:
   displayName: 'npm disable package lock'
 
 - powershell: |
+    if ((test-path .\package-lock.json) -eq "True") {rm package-lock.json -force} else {}
+  displayName: "remove package lock if present"
+
+- powershell: |
     Write-Host "setting up git properties for npm version"
     git config --global user.email "you@example.com"
     git config --global user.name "Your Name"
@@ -42,11 +46,7 @@ steps:
     git status
     git show
     git checkout master
-  displayName: "git checkout"
-
-- powershell: |
-    if ((test-path .\package-lock.json) -eq "True") {rm package-lock.json -force} else {}
-  displayName: "remove package lock if present"
+  displayName: "git checkout master"
 
 - powershell: |
    Write-Host "npm version $(UPDATE_TYPE)"
@@ -62,14 +62,13 @@ steps:
     #git status
     #git show
     #git commit -m "***NO_CI***"
-    git push 
+    git push --tags
   displayName: "push updated package.json to remote git"
 
 - powershell: |
    Write-Host "vsce package"
    vsce package   
   displayName: 'package into .vsix'
-
 
 - task: CopyFiles@2
   displayName: 'Copy Files to Artifact Directory)'
