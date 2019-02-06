@@ -53,8 +53,10 @@ steps:
   displayName: 'package into .vsix'
 
 - powershell: |
+    get-random > random.txt
     git checkout master
     git add package.json
+    git add random.txt
     git commit -m "***NO_CI***"
     git push origin master
   displayName: "push updated package.json to remote git"
