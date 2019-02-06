@@ -57,11 +57,6 @@ steps:
 - powershell: |
     git status
     git show
-    #get-random > random.txt
-    #git add *
-    #git status
-    #git show
-    #git commit -m "***NO_CI***"
     git push 
   displayName: "push updated package.json to remote git"
 
