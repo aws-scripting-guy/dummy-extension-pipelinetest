@@ -36,9 +36,16 @@ steps:
 
 - powershell: |
     git checkout master
-    git add package-lock.json
     git add package.json
   displayName: "git checkout master"
+
+- powershell: |
+    npm config set package-lock false
+  displayName: 'npm disable package lock'
+
+- powershell: |
+    if ((test-path .\package-lock.json) -eq "True") {rm package-lock.json -force} else {}
+  displayName: "remove package lock if present"
 
 - powershell: |
    Write-Host "npm version $(UPDATE_TYPE)"
@@ -68,7 +75,6 @@ steps:
      **\package.json
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-# publish build in artifact directory
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
