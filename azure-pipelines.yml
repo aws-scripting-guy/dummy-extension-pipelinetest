@@ -57,7 +57,7 @@ steps:
     #git status
     #git show
     #git commit -m "***NO_CI***"
-    git push
+    git push --tags
   displayName: "push updated package.json to remote git"
 
 - powershell: |
