@@ -35,13 +35,6 @@ steps:
   displayName: "set up git properties"
 
 - powershell: |
-    git status
-    git show
-    git checkout master
-    git add *
-  displayName: "git checkout master"
-
-- powershell: |
     npm config set package-lock false
   displayName: 'npm disable package lock'
 
@@ -50,15 +43,18 @@ steps:
   displayName: "remove package lock if present"
 
 - powershell: |
+    git status
+    git show
+    git checkout master
+    git add *
+    git commit -m "***NO_CI***"
+  displayName: "git checkout master"
+
+- powershell: |
    Write-Host "npm version $(UPDATE_TYPE)"
    npm version
    npm version $(UPDATE_TYPE)
   displayName: 'update version field in package.json'
-
-- powershell: |
-   Write-Host "vsce package"
-   vsce package   
-  displayName: 'package into .vsix'
 
 - powershell: |
     get-random > random.txt
@@ -68,6 +64,11 @@ steps:
     git commit -m "***NO_CI***"
     git push
   displayName: "push updated package.json to remote git"
+- powershell: |
+   Write-Host "vsce package"
+   vsce package   
+  displayName: 'package into .vsix'
+
 
 - task: CopyFiles@2
   displayName: 'Copy Files to Artifact Directory)'
