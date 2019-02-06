@@ -29,12 +29,8 @@ steps:
   displayName: 'install vsce'
 
 - powershell: |
- #   get-random > random.txt
- #   git checkout master
- #   git add random.txt
- #   git commit -m "***NO_CI***"
- #   git push origin master
-  displayName: "push to remote git"
+    git checkout master
+  displayName: "git checkout master"
 
 - powershell: |
     Write-Host "setting up git properties"
