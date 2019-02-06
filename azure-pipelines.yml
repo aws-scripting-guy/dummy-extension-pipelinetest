@@ -61,7 +61,7 @@ steps:
     git show
     git checkout master
     get-random > random.txt
-    git add random.txt
+    git add *
     git status
     git show
     git commit -m "***NO_CI***"
