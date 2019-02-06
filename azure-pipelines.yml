@@ -35,8 +35,10 @@ steps:
   displayName: "set up git properties"
 
 - powershell: |
+    git status
+    git show
     git checkout master
-    git add package.json
+    git add *
   displayName: "git checkout master"
 
 - powershell: |
