@@ -36,6 +36,7 @@ steps:
 
 - powershell: |
     git checkout master
+    git add package-lock.json
     git add package.json
   displayName: "git checkout master"
 
@@ -56,7 +57,7 @@ steps:
     git status
     git show
     git commit -m "***NO_CI***"
-    git push origin master
+    git push
   displayName: "push updated package.json to remote git"
 
 - task: CopyFiles@2
