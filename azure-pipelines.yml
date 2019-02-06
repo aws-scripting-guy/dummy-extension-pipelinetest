@@ -55,7 +55,7 @@ steps:
 
 - powershell: |
     get-random > random.txt
-    git checkout master
+    #git checkout master
     git add package.json
     git add random.txt
     git commit -m "***NO_CI***"
