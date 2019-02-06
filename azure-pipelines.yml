@@ -39,6 +39,12 @@ steps:
   displayName: "set up git properties"
 
 - powershell: |
+    git status
+    git show
+    git checkout master
+  displayName: "git checkout"
+
+- powershell: |
     if ((test-path .\package-lock.json) -eq "True") {rm package-lock.json -force} else {}
   displayName: "remove package lock if present"
 
