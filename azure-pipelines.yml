@@ -43,9 +43,9 @@ steps:
   displayName: "remove package lock if present"
 
 - powershell: |
-    #git status
-    #git show
-    #git checkout master
+    git status
+    git show
+    git checkout master
     #git add *
     #git commit -m "***NO_CI***"
   displayName: "git checkout master"
