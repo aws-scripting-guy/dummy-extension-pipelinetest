@@ -29,14 +29,14 @@ steps:
   displayName: 'install vsce'
 
 - powershell: |
-    git checkout master
-  displayName: "git checkout master"
-
-- powershell: |
     Write-Host "setting up git properties"
     git config --global user.email "you@example.com"
     git config --global user.name "Your Name"
   displayName: "set up git properties"
+
+- powershell: |
+    git checkout -
+  displayName: "git checkout master"
 
 - powershell: |
    Write-Host "npm version $(UPDATE_TYPE)"
@@ -54,6 +54,8 @@ steps:
     git checkout master
     git add package.json
     git add random.txt
+    git status
+    git show
     git commit -m "***NO_CI***"
     git push origin master
   displayName: "push updated package.json to remote git"
