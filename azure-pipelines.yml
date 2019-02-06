@@ -29,14 +29,14 @@ steps:
   displayName: 'install vsce'
 
 - powershell: |
-    Write-Host "setting up git properties"
+    npm config set package-lock false
+  displayName: 'npm disable package lock'
+
+- powershell: |
+    Write-Host "setting up git properties for npm version"
     git config --global user.email "you@example.com"
     git config --global user.name "Your Name"
   displayName: "set up git properties"
-
-- powershell: |
-    npm config set package-lock false
-  displayName: 'npm disable package lock'
 
 - powershell: |
     if ((test-path .\package-lock.json) -eq "True") {rm package-lock.json -force} else {}
@@ -60,11 +60,11 @@ steps:
     git status
     git show
     git checkout master
-    get-random > random.txt
-    git add *
-    git status
-    git show
-    git commit -m "***NO_CI***"
+    #get-random > random.txt
+    #git add *
+    #git status
+    #git show
+    #git commit -m "***NO_CI***"
     git push
   displayName: "push updated package.json to remote git"
 
