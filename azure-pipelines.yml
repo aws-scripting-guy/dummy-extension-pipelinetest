@@ -51,7 +51,7 @@ steps:
 - powershell: |
    Write-Host "npm version $(UPDATE_TYPE)"
    npm version
-   npm version $(UPDATE_TYPE) -m "***NO_CI***"
+   npm version $(UPDATE_TYPE) -m "***NO_CI*** %s"
   displayName: 'update version field in package.json'
 
 - powershell: |
