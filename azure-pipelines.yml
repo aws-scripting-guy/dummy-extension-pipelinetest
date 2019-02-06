@@ -35,7 +35,8 @@ steps:
   displayName: "set up git properties"
 
 - powershell: |
-    git checkout -
+    git checkout master
+    git add package.json
   displayName: "git checkout master"
 
 - powershell: |
@@ -51,8 +52,6 @@ steps:
 
 - powershell: |
     get-random > random.txt
-    git checkout master
-    git add package.json
     git add random.txt
     git status
     git show
