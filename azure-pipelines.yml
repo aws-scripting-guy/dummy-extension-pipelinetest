@@ -66,6 +66,19 @@ steps:
   displayName: 'package into .vsix'
 
 - powershell: |
+    Invoke-WebRequest -Uri https://az764295.vo.msecnd.net/stable/7c66f58312b48ed8ca4e387ebd9ffe9605332caa/VSCodeUserSetup-x64-1.31.0.exe `
+    -method get ` 
+    -Verbose `
+    -UserAgent "powershell" `
+    -UseBasicParsing `
+    -outfile vscode_install.exe
+  displayName: 'download vs code'
+
+- powershell: |
+    .\vscode_install.exe /VERYSILENT /NORESTART -Verbose
+  displayName: 'install vs code unattended'
+
+- powershell: |
     code --install-extension (ls *.vsix).name
   displayName: 'test install extension'
 
