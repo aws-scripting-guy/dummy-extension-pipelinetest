@@ -74,11 +74,11 @@ steps:
   displayName: 'install vs code unattended'
 
 - powershell: |
-    code --v
+    # code --v
   displayName: 'verify code executable works'
 
 - powershell: |
-    code --install-extension (ls *.vsix).name
+    # code --install-extension (ls *.vsix).name
   displayName: 'test install extension'
 
 - task: CopyFiles@2
