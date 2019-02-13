@@ -37,6 +37,10 @@ steps:
   displayName: "remove package lock if present"
 
 - powershell: |
+    (Get-Content -Raw .\snippets.json | ConvertFrom-Json)
+  displayName: "validate extension JSON schema"
+
+- powershell: |
     Write-Host "setting up git properties for npm version"
     git config --global user.email "you@example.com"
     git config --global user.name "AWS Scripting Guy from Azure DevOps"
